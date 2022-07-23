@@ -1,10 +1,13 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +27,17 @@ public class WelcomeFormController {
         AnchorPane.setTopAnchor(registerForm,0.0);
         AnchorPane.setLeftAnchor(registerForm,0.0);
         AnchorPane.setRightAnchor(registerForm,0.0);
+
+        pneContainer.getScene().getWindow().sizeToScene();
+
+//        Platform.runLater(()->{
+//            Window window = pneContainer.getScene().getWindow();
+//            Stage s = (Stage) window;
+//            s.setHeight(800);
+//        });
+//        Window window = pneContainer.getScene().getWindow();
+//        Stage s = (Stage) window;
+//        s.setHeight(800);
 
     }
 

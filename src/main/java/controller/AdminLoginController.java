@@ -8,9 +8,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import javax.print.attribute.standard.Media;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -36,11 +36,10 @@ public class AdminLoginController {
                 return;
             }
 
-
             URL resource1 = this.getClass().getResource("/mp3/Security-breach.mp3");
-            /*Media media = new Media(resource1.toString());
+            Media media = new Media(resource1.toString());
             MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.play();*/
+            mediaPlayer.play();
 
 
             Alert alert = new Alert(Alert.AlertType.ERROR, "Password is Incorrect. Attempts Remaining :"+attempts);
@@ -55,7 +54,7 @@ public class AdminLoginController {
             alert.setHeaderText("Invalid Login Credentials");
             alert.setTitle("Access Denied");
             alert.showAndWait();
-            /*mediaPlayer.dispose();*/
+            mediaPlayer.dispose();
             txtPassword.clear();
             return;
         }

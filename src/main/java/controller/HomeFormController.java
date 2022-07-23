@@ -8,6 +8,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,10 +40,14 @@ public class HomeFormController {
         URL resource = this.getClass().getResource("/AdminLoginForm.fxml");
         AnchorPane adminLoginForm = FXMLLoader.load(resource);
         pneContainer.getChildren().add(adminLoginForm);
+
+
         AnchorPane.setRightAnchor(adminLoginForm,0.0);
         AnchorPane.setLeftAnchor(adminLoginForm,0.0);
         AnchorPane.setTopAnchor(adminLoginForm,0.0);
         AnchorPane.setBottomAnchor(adminLoginForm,0.0);
+
+
     }
 
     public void pneLogin_OnKeyReleased(KeyEvent keyEvent) throws IOException {

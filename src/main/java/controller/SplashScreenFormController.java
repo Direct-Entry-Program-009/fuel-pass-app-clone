@@ -55,7 +55,6 @@ public class SplashScreenFormController {
                     stage.show();
                     lblLoad.getScene().getWindow().hide();
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
                 }
             }
         });

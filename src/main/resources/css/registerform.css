@@ -1,0 +1,9 @@
+#txtLoginHere:hover, #txtLoginHere:focused{
+    -fx-text-fill: #0083f5b5;
+}
+
+
+
+#btnRegister:hover, #btnRegister:focused{
+    -fx-text-fill: #0083f5b5;
+}
