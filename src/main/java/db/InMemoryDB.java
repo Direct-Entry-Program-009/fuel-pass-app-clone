@@ -6,8 +6,10 @@ import java.util.ArrayList;
 public class InMemoryDB {
     private static ArrayList<User> userDataBase = new ArrayList<>();
 
-    public static void registerUser(User user){
-        userDataBase.add(user);
+    public static boolean registerUser(User newUser){
+        if(findUser(newUser.getNic())!=null)return false;
+        userDataBase.add(newUser);
+        return true;
     }
 
     public static User findUser(String nic){

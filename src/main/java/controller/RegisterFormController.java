@@ -1,10 +1,14 @@
 package controller;
 
+import db.InMemoryDB;
+import db.User;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -57,7 +61,7 @@ public class RegisterFormController {
         });
     }
 
-    private boolean isValidNIC(String input){
+    public static boolean isValidNIC(String input){
         if (input.length() != 10) return false;
         if(!(input.endsWith("v") || input.endsWith("V"))) return false;
         if(!(input.substring(0,9).matches("\\d+")))return false;
@@ -75,5 +79,55 @@ public class RegisterFormController {
         AnchorPane.setTopAnchor(loginForm,0.0);
         AnchorPane.setBottomAnchor(loginForm,0.0);
     }
+    public boolean isName(String input){
+        char[] chars = input.toCharArray();
+        for (char aChar : chars) {
+            if((!Character.isLetter(aChar)) && (aChar!=' '))return false;
+        }
+        return true;
+    }
 
+    public void btnRegister_OnAction(ActionEvent actionEvent) throws IOException {
+        //validate FirstName
+        if(txtFirstName.getText().isBlank()){
+            new Alert(Alert.AlertType.ERROR,"First Name Field is Empty").showAndWait();
+            txtFirstName.requestFocus();
+            return;
+        }
+        if(!isName(txtFirstName.getText())){
+            new Alert(Alert.AlertType.ERROR,"First Name is Invalid").showAndWait();
+            txtFirstName.requestFocus();
+            return;
+        }
+        if(!isName(txtLastName.getText())){
+            new Alert(Alert.AlertType.ERROR,"Last Name is Invalid").showAndWait();
+            txtLastName.requestFocus();
+            return;
+        }
+
+
+        //Validate Address
+        if(txtAddress.getText().trim().length()<3){
+            new Alert(Alert.AlertType.ERROR,"Address Field is Empty").showAndWait();
+            txtAddress.requestFocus();
+            return;
+        }
+        String lastName;
+        if(txtLastName.getText().isBlank()){
+            lastName="";
+        }else{
+            lastName=txtAddress.getText();
+        }
+
+        User user = new User(txtNIC.getText(),txtFirstName.getText(),lastName,txtAddress.getText());
+
+        boolean result = InMemoryDB.registerUser(user);
+        if(result){
+            new Alert(Alert.AlertType.INFORMATION,"You have Successfully Registered..\nYou are redirected to Login form").showAndWait();
+            txtLoginHere_OnMenuClicked(null);
+        }else{
+            new Alert(Alert.AlertType.ERROR,"NIC is already Registered, Please check the NIC again").showAndWait();
+            txtNIC.requestFocus();
+        }
+    }
 }

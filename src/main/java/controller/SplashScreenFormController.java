@@ -8,9 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import util.Navigation;
 
 import java.io.IOException;
 
@@ -46,13 +48,17 @@ public class SplashScreenFormController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
-                    Parent load = FXMLLoader.load(this.getClass().getResource("/HomeForm.fxml"));
-                    Scene scene = new Scene(load);
+                    Parent homeFormContainer = FXMLLoader.load(this.getClass().getResource("/HomeForm.fxml"));
+                    Scene scene = new Scene(homeFormContainer);
                     Stage stage = new Stage();
                     stage.setScene(scene);
                     stage.centerOnScreen();
                     stage.setTitle("National Fuel Pass");
                     stage.show();
+
+                    AnchorPane pneContainer =(AnchorPane) homeFormContainer.lookup("#pneContainer");
+                    Navigation.init(pneContainer);
+
                     lblLoad.getScene().getWindow().hide();
                 } catch (IOException e) {
                 }

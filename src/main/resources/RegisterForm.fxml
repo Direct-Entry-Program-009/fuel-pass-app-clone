@@ -81,7 +81,7 @@
             <Font name="DejaVu Sans Condensed Bold" size="18.0" />
          </font>
       </Label>
-      <Button id="btnRegister" fx:id="btnRegister" disable="true" layoutX="20.0" layoutY="365.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: rgba(0,137,247,1);" text="Register" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="365.0">
+      <Button id="btnRegister" fx:id="btnRegister" disable="true" layoutX="20.0" layoutY="365.0" mnemonicParsing="false" onAction="#btnRegister_OnAction" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: rgba(0,137,247,1);" text="Register" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="365.0">
          <font>
             <Font name="DejaVu Sans Bold" size="13.0" />
          </font>

@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import util.Navigation;
+import util.Routes;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,12 +24,13 @@ public class HomeFormController {
 
     public void initialize() throws IOException {
 
-        AnchorPane welcomeForm = FXMLLoader.load(this.getClass().getResource("/WelcomeForm.fxml"));
-        pneContainer.getChildren().add(welcomeForm);
-        AnchorPane.setBottomAnchor(welcomeForm,0.0);
-        AnchorPane.setTopAnchor(welcomeForm,0.0);
-        AnchorPane.setLeftAnchor(welcomeForm,0.0);
-        AnchorPane.setRightAnchor(welcomeForm,0.0);
+        Platform.runLater(() ->{
+            try {
+                Navigation.navigate(Routes.WELCOME);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void imgHome_OnMouseClicked(MouseEvent mouseEvent) throws IOException {
@@ -36,16 +39,7 @@ public class HomeFormController {
     }
 
     public void pneLogin_OnMouseClicked(MouseEvent mouseEvent) throws IOException {
-        pneContainer.getChildren().clear();
-        URL resource = this.getClass().getResource("/AdminLoginForm.fxml");
-        AnchorPane adminLoginForm = FXMLLoader.load(resource);
-        pneContainer.getChildren().add(adminLoginForm);
-
-
-        AnchorPane.setRightAnchor(adminLoginForm,0.0);
-        AnchorPane.setLeftAnchor(adminLoginForm,0.0);
-        AnchorPane.setTopAnchor(adminLoginForm,0.0);
-        AnchorPane.setBottomAnchor(adminLoginForm,0.0);
+        Navigation.navigate(Routes.ADMIN_LOGIN);
 
 
     }

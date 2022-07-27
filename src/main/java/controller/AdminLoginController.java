@@ -10,6 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import util.Navigation;
+import util.Routes;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,13 +60,6 @@ public class AdminLoginController {
             txtPassword.clear();
             return;
         }
-        AnchorPane controlCenter = FXMLLoader.load(this.getClass().getResource("/ControlCenterForm.fxml"));
-        AnchorPane pneContainer = (AnchorPane) pneAdminLoginForm.getParent();
-        pneContainer.getChildren().clear();
-        pneContainer.getChildren().add(controlCenter);
-        AnchorPane.setBottomAnchor(controlCenter,0.0);
-        AnchorPane.setTopAnchor(controlCenter,0.0);
-        AnchorPane.setRightAnchor(controlCenter,0.0);
-        AnchorPane.setLeftAnchor(controlCenter,0.0);
+        Navigation.navigate(Routes.CONTROL_CENTER);
     }
 }
